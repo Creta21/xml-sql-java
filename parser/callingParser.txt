@@ -1,0 +1,5 @@
+File xmlFile = new File("src/main/java/com/xml/Train.xml");
+ 
+Parser parser = new Parser();
+        
+parser.parserXml(new FileInputStream(xmlFile));
