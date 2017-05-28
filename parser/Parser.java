@@ -1,3 +1,5 @@
+package parser;
+
 import java.io.IOException;
 import java.io.InputStream;
 import org.xml.sax.InputSource;
@@ -6,7 +8,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 public class Parser {
-    public void parserXml(InputStream in){
+    public Object parserXml(InputStream in){
         //Dhmiourgia object typou Handler
         Handler handler = new Handler();
         
@@ -28,5 +30,6 @@ public class Parser {
         } finally {
             
         }
+        return handler.getData();
     }
 }
