@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<root>
+    <Passengers>
+	<Passenger>
+            $if(nbrAdults)$
+            <AnonymousTraveler>
+                <PTC Quantity="$nbrAdults$">ADT</PTC>
+            </AnonymousTraveler>
+            $endif$
+            $if(nbrChildren)$
+            <AnonymousTraveler>
+                <PTC Quantity="$nbrChildren$">CHD</PTC>
+            </AnonymousTraveler>
+            $endif$
+	</Passenger>
+    </Passengers>
+        <OriginDestinations>
+            <OriginDestination>
+                <Departure>
+                        <AirportCode>$departureStation$</AirportCode>
+                        <Date>$departureTime$</Date>
+                </Departure>
+                <Arrival>
+                        <AirportCode>$arrivalStation$</AirportCode>
+                </Arrival>
+            </OriginDestination>
+            $if(returnTime)$
+            <OriginDestination>
+                    <Departure>
+                            <AirportCode>$arrivalStation$</AirportCode>
+                            <Date>$returnTime$</Date>
+                    </Departure>
+                    <Arrival>
+                            <AirportCode>$departureStation$</AirportCode>
+                    </Arrival>
+            </OriginDestination>
+            $endif$
+        </OriginDestinations>
+</root>
