@@ -4,4 +4,4 @@ File xmlFile = new File("src/main/java/com/xml/Train.xml");
 Parser parser = new Parser();
   
 //Parse the file
-parser.parserXml(new FileInputStream(xmlFile));
+data = parser.parserXml(new FileInputStream(xmlFile));
