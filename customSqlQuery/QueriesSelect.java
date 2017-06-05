@@ -20,7 +20,6 @@ public class QueriesSelect {
                 trip.setDeparture_station(result.getString("departure_station"));
                 trip.setArrival_station(result.getString("arrival_station"));
                 trip.setTrip_number(result.getString("trip_number"));
-                trip.setStop_station(result.getString("stop_station"));
                 trips.add(trip);
             }
         } catch (Exception ex) {
