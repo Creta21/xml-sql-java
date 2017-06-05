@@ -7,6 +7,11 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 
+//kalesma
+//Validation validation = new Validation();
+//System.out.println("The Xml file is Valid: " + validation.isvalid("src/main/java/xml/nameXML.xml", "src/main/java/xml/nameXSD.xsd"));
+
+
 public class Validation {
     public Boolean isvalid(String xml, String xsd) throws Exception{
         boolean flag = true;
