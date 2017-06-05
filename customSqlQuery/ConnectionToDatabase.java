@@ -49,6 +49,7 @@ public class ConnectionToDatabase {
     ///// get properties from file.
     private HashMap<String, String> getProperties() throws IOException{
         Properties prop = new Properties();
+<<<<<<< HEAD
 		InputStream input = null;
         HashMap<String, String> properties = new HashMap<>();
 		try {
@@ -70,7 +71,30 @@ public class ConnectionToDatabase {
 							e.printStackTrace();
 					}
 				}
+=======
+	InputStream input = null;
+        HashMap<String, String> properties = new HashMap<>();
+	try {
+		// Take the file from Other Sources
+		input = new FileInputStream("src/main/resources/database.properties");
+		// load a properties file
+		prop.load(input);
+		// add to Hash map
+		properties.put("database", prop.getProperty("database"));
+		properties.put("dbuser", prop.getProperty("dbuser"));
+		properties.put("dbpassword", prop.getProperty("dbpassword"));
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+>>>>>>> ff4df63647c2b87e40add1e2301364f55d28b1bd
 		}
-			return properties;
-	} 
+	}
+	return properties;
+     } 
 }
