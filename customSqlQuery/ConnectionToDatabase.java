@@ -32,8 +32,13 @@ public class ConnectionToDatabase {
     /////////////////////////////////////////////////////////////////////////
     public Connection connect2() throws Exception{
         try {
-            ArrayList<String> prop = this.getProperties();
-            Connection conn = DriverManager.getConnection(prop.get(0), prop.get(1), prop.get(2));
+            String driver = "com.mysql.jdbc.Driver";
+            Class.forName(driver);
+			
+            HashMap<String, String> properties = this.getProperties();
+            Connection conn = DriverManager.getConnection(properties.get("database"),properties.get("dbuser"),properties.get("dbpassword"));
+			
+            System.out.println("DataBase Connected");
             return conn;
             
         } catch (Exception e) {
@@ -42,31 +47,31 @@ public class ConnectionToDatabase {
         return null;
     }
     ///// get properties from file.
-    private ArrayList<String> getProperties() throws IOException{
+    private HashMap<String, String> getProperties() throws IOException{
         Properties prop = new Properties();
-	InputStream input = null;
-        ArrayList<String> properties = new ArrayList<>();
-	try {
-            // Take the file from Other Sources
-            input = new FileInputStream("src/main/resources/database.properties");
-            // load a properties file
-            prop.load(input);
-            // add to array list
-            properties.add(prop.getProperty("database"));
-            properties.add(prop.getProperty("dbuser"));
-            properties.add(prop.getProperty("dbpassword"));
+		InputStream input = null;
+         HashMap<String, String> properties = new HashMap<>();
+		try {
+				// Take the file from Other Sources
+				input = new FileInputStream("src/main/resources/database.properties");
+				// load a properties file
+				prop.load(input);
+				// add to Hash map
+				properties.put("database", prop.getProperty("database"));
+				properties.put("dbuser", prop.getProperty("dbuser"));
+				properties.put("dbpassword", prop.getProperty("dbpassword"));
 
-	} catch (IOException ex) {
-		ex.printStackTrace();
-	} finally {
-            if (input != null) {
-                try {
-                        input.close();
-                } catch (IOException e) {
-                        e.printStackTrace();
-                }
-            }
-	}
-        return properties;
-    } 
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+				if (input != null) {
+					try {
+							input.close();
+					} catch (IOException e) {
+							e.printStackTrace();
+					}
+				}
+		}
+			return properties;
+	} 
 }
