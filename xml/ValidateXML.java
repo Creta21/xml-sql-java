@@ -7,11 +7,11 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 
-public class ValidateXML {
-    public Boolean isvalid() throws Exception{
+public class Validation {
+    public Boolean isvalid(String xml, String xsd) throws Exception{
         boolean flag = true;
         try{
-            validate("src/main/java/com/xml/Train.xml","src/main/java/com/xml/Train.xsd");
+            validate(xml,xsd);
         } catch (SAXException e) {
             flag = false;
             System.out.println("SAXException: " + e);
